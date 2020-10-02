@@ -47,5 +47,6 @@ namespace Chapter4
         {
             return $"{Year}年{Month}月";
         }
+
     }
 }
