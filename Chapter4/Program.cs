@@ -10,7 +10,7 @@ namespace Chapter4
     {
         static void Main(string[] args)
         {
-
+            int[] datas = new int[] { 1, 2, 3, 4, 5, 6, };
         }
     }
 }
