@@ -41,5 +41,11 @@ namespace Chapter4
                 return new YearMonth(Year + 1, 1);
             }
         }
+        //4.1.4
+        //ToString()メソッドのオーバーライド
+        public override string ToString()
+        {
+            return $"{Year}年{Month}月";
+        }
     }
 }
