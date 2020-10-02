@@ -27,5 +27,19 @@ namespace Chapter4
                 return 2001 <= Year && Year <= 2100;
             }
         }
+
+        //4.1.3
+        //AddOneMonth()メソッドを追加
+        public YearMonth AddOneMonth()
+        {
+            if (Month < 12)
+            {
+                return new YearMonth(Year, Month + 1);
+            }
+            else
+            {
+                return new YearMonth(Year + 1, 1);
+            }
+        }
     }
 }
