@@ -61,34 +61,53 @@ namespace Chapter6
                 new Book { Title = "楽しいC#プログラミング教室", Price = 2540, Pages = 348 },
             };
 
+            //すべての書籍から「C#」の文字がいくつあるかをカウントする
+            Console.WriteLine("\n--------------------");
+            int count = 0;
+            foreach (var bk in books.Where(x => x.Title.Contains("C#")))
+            {
+                for (int i = 0; i < bk.Title.Length - 1; i++)
+                {
+                    if ((bk.Title[i] == 'C')&&(bk.Title[i + 1] == '#'))
+                    {
+                        count++;
+                    }
+                }
+            }
+            Console.WriteLine($"文字列「C#」の個数は{count}です。");
+            
+
             //6.2.1
             Console.WriteLine("\n--------------------");
-            var book = books.Where(x => x.Title == "ワンダフル・C#ライフ");
-            foreach (var item in book)
+            var book = books.FirstOrDefault(x => x.Title == "ワンダフル・C#ライフ");
+            if (book != null)
             {
-                Console.WriteLine($"価格{item.Price}");
-                Console.Write($"ページ数{item.Pages}");
+                Console.WriteLine($"価格：{book.Price}");
+                Console.WriteLine($"ページ数：{book.Pages}");
             }
 
             //6.2.2
             Console.WriteLine("\n--------------------");
             var title = books.Count(x => x.Title.Contains("C#"));
-            Console.Write($"{title}冊");
+            Console.WriteLine($"{title}冊");
 
             //6.2.3
             Console.WriteLine("\n--------------------");
             var avg = books.Where(x => x.Title.Contains("C#")).Average(x => x.Pages);
-            Console.Write($"平均ページ数：{avg}ページ");
+            Console.WriteLine($"平均ページ数：{avg}ページ");
 
             //6.2.4
             Console.WriteLine("\n--------------------");
             var price = books.FirstOrDefault(x => x.Price >= 4000);
-            Console.Write(price.Title);
+            if (price != null)
+            {
+                Console.WriteLine(price.Title);
+            }
 
             //6.2.5
             Console.WriteLine("\n--------------------");
             var max = books.Where(x => x.Price <= 4000).Max(x => x.Pages);
-            Console.Write($"{max}ページ");
+            Console.WriteLine($"{max}ページ");
 
             //6.2.6
             Console.WriteLine("\n--------------------");
