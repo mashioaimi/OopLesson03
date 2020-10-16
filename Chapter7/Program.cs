@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security.Authentication;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,60 +14,34 @@ namespace Chapter7
     {
         static void Main(string[] args)
         {
-            #region 辞書登録プログラム
+            //7-1
+            var text = "Cozy lummox gives smart squid who asks for job pen";
+            Exercise1_1(text); //問題7.1.1
 
-            Console.WriteLine("**********************");
-            Console.WriteLine("* 辞書登録プログラム *");
-            Console.WriteLine("**********************");
-
-            DuplicateKeySample();
         }
-        static public void DuplicateKeySample()
+        static void Exercise1_1(string text)
         {
-            // ディクショナリの初期化
-            var dict = new Dictionary<string, List<string>>();
+            var dict = new Dictionary<char, int>();
 
-            while (true)
+            foreach (var ch in text.ToUpper())
             {
-                Console.WriteLine("1.登録 2.内容を表示 3.終了");
-                Console.Write(">");
-                var select = Console.ReadLine();
-                if (select == "1")
+                if ('A' <= ch && ch <= 'Z')
                 {
-                    Console.Write("KEY入力：");
-                    var key = Console.ReadLine();
-                    Console.Write("VALUEを入力：");
-                    var value = Console.ReadLine();
-                    // ディクショナリに追加
-                    if (dict.ContainsKey(key))
+                    if (dict.ContainsKey(ch))
                     {
-                        dict[key].Add(value);
+                        dict[ch] += 1;
                     }
                     else
                     {
-                        dict[key] = new List<string> { value };
+                        dict[ch] = 1;
                     }
-                    Console.WriteLine("登録しました！");
-                    Console.WriteLine(" ");
                 }
-                else if (select == "2")
-                {
-                    // ディクショナリの内容を列挙
-                    foreach (var item in dict)
-                    {
-                        foreach (var term in item.Value)
-                        {
-                            Console.WriteLine("{0} : {1}", item.Key, term);
-                        }
-                    }
-                    Console.WriteLine(" ");
-                }
-                else if (select == "3")
-                {
-                    break;
-                }
+            }
+
+            foreach (var item in dict.OrderBy(x => x.Key))
+            {
+                Console.WriteLine("{0}:{1}", item.Key,item.Value);
             }
         }
     }
-#endregion
 }
