@@ -5,15 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SendMailApp"
         mc:Ignorable="d"
-        Title="設定" Height="410" Width="702" ResizeMode="NoResize">
+        Title="設定" Height="450" Width="800" ResizeMode="NoResize">
     <Grid Background="LightGoldenrodYellow">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="165*"/>
+            <ColumnDefinition Width="629*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="4*"/>
             <RowDefinition Height="3*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <GroupBox Grid.Row="0" BorderBrush="Black" Header="送信情報">
+        <GroupBox Grid.Row="0" BorderBrush="Black" Header="送信情報" Margin="5,10" Grid.ColumnSpan="2">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="3*"/>
@@ -49,7 +53,7 @@
             </Grid>
         </GroupBox>
 
-        <GroupBox Grid.Row="1" BorderBrush="Black" Margin="5,10" Header="ユーザー情報">
+        <GroupBox Grid.Row="1" BorderBrush="Black" Margin="5,10" Header="ユーザー情報" Grid.ColumnSpan="2">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -61,13 +65,29 @@
                     <ColumnDefinition Width="3*"/>
                     <ColumnDefinition Width="4*"/>
                 </Grid.ColumnDefinitions>
+
                 <TextBlock Grid.Row="1" Grid.Column="0" Text="送信元："
                            HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <TextBox x:Name="tbSender" Grid.Row="1" Grid.Column="1" Margin="5,5"/>
+                <TextBox x:Name="tbSender" Grid.Row="1" Grid.Column="1" Margin="5"/>
 
             </Grid>
         </GroupBox>
 
+        <Grid Grid.Row="2" Background="AntiqueWhite" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="6*"/>
+                <ColumnDefinition Width="4*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <Button x:Name="btDefault" Content="初期値" Width="100" Margin="10" Click="btDefault_Click"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Horizontal">
+                <Button x:Name="btOk" Content="ＯＫ" Width="80" Margin="10"/>
+                <Button x:Name="btCancel" Content="キャンセル" Width="80" Margin="10"/>
+                <Button x:Name="btApply" Content="適用" Width="80" Margin="10" Click="btApply_Click"/>
+            </StackPanel>
+
+        </Grid>
 
     </Grid>
 </Window>
