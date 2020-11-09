@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SendMailApp"
         mc:Ignorable="d"
-        Title="設定" Height="450" Width="800" ResizeMode="NoResize">
+        Title="メール送信設定" Height="450" Width="800" Loaded="Window_Loaded">
     <Grid Background="LightGoldenrodYellow">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="165*"/>
-            <ColumnDefinition Width="629*"/>
+            <ColumnDefinition Width="94*"/>
+            <ColumnDefinition Width="535*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="4*"/>
@@ -17,7 +18,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <GroupBox Grid.Row="0" BorderBrush="Black" Header="送信情報" Margin="5,10" Grid.ColumnSpan="2">
+        <GroupBox Grid.Row="0" BorderBrush="Black" Header="送信情報" Margin="5,10" Grid.ColumnSpan="3">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="3*"/>
@@ -53,7 +54,7 @@
             </Grid>
         </GroupBox>
 
-        <GroupBox Grid.Row="1" BorderBrush="Black" Margin="5,10" Header="ユーザー情報" Grid.ColumnSpan="2">
+        <GroupBox Grid.Row="1" BorderBrush="Black" Margin="5,10" Header="ユーザー情報" Grid.ColumnSpan="3">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -73,7 +74,7 @@
             </Grid>
         </GroupBox>
 
-        <Grid Grid.Row="2" Background="AntiqueWhite" Grid.ColumnSpan="2">
+        <Grid Grid.Row="2" Background="AntiqueWhite" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="6*"/>
                 <ColumnDefinition Width="4*"/>
@@ -82,8 +83,8 @@
                 <Button x:Name="btDefault" Content="初期値" Width="100" Margin="10" Click="btDefault_Click"/>
             </StackPanel>
             <StackPanel Grid.Column="1" Orientation="Horizontal">
-                <Button x:Name="btOk" Content="ＯＫ" Width="80" Margin="10"/>
-                <Button x:Name="btCancel" Content="キャンセル" Width="80" Margin="10"/>
+                <Button x:Name="btOk" Content="ＯＫ" Width="80" Margin="10" Click="btOk_Click"/>
+                <Button x:Name="btCancel" Content="キャンセル" Width="80" Margin="10" Click="btCancel_Click"/>
                 <Button x:Name="btApply" Content="適用" Width="80" Margin="10" Click="btApply_Click"/>
             </StackPanel>
 
