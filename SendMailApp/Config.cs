@@ -68,6 +68,7 @@ namespace SendMailApp
             this.MailAddress = mailAddress;
             this.PassWord = passWord;
             this.Port = port;
+            this.Ssl = ssl;
             return true;
         }
     }

@@ -45,7 +45,7 @@
 
                 <TextBlock Grid.Row="1" Grid.Column="2" Text="パスワード："
                            HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                <PasswordBox x:Name="tbPassWord" Grid.Row="3" Grid.Column="3" Margin="5,20"/>
+                <PasswordBox x:Name="tbPassWord" Grid.Row="1" Grid.Column="3" Margin="5,20"/>
 
                 <CheckBox x:Name="cbSsl" Grid.Row="3" Grid.Column="3" Content="SSL有効"
                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
