@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -38,20 +40,42 @@ namespace SendMailApp
         //適用（更新）
         private void btApply_Click(object sender, RoutedEventArgs e)
         {
-            (Config.GetInstance()).UpdateStatus(
+            if (tbSmtp.Text == "" || tbPassWord.Password == "" || tbUserName.Text == "" || tbPort.Text == "" || tbSender.Text == "")
+            {
+                MsgBox();
+            }
+            else
+            {
+                (Config.GetInstance()).UpdateStatus(
+                tbSmtp.Text,
+                tbUserName.Text,
+                tbPassWord.Password,
+                int.Parse(tbPort.Text),
+                cbSsl.IsChecked ?? false);  //更新処理を呼び出す
+                this.Close();
+            }
+        }
 
-            tbSmtp.Text,
-            tbUserName.Text,
-            tbPassWord.Password,
-            int.Parse(tbPort.Text),
-            cbSsl.IsChecked ?? false);  //更新処理を呼び出す
+        private void MsgBox()
+        {
+            System.Windows.Forms.MessageBox.Show("正しい値を入力してください。",
+            "エラー",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Error);
         }
 
         //OKボタン
         private void btOk_Click(object sender, RoutedEventArgs e)
         {
-            btApply_Click(sender,e);    //更新処理を呼び出す
-            this.Close();
+            if (tbSmtp.Text == "" || tbUserName.Text == "" || tbPassWord.Password == "" || tbPort.Text == "" || tbSender.Text == "")
+            {
+                MsgBox();
+            }
+            else
+            {
+                btApply_Click(sender, e);    //更新処理を呼び出す
+                this.Close();
+            }
         }
 
         //キャンセルボタン

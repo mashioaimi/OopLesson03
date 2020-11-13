@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -88,12 +89,38 @@ namespace SendMailApp
         //メインウィンドウがロードされるタイミングで呼び出される
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Config.GetInstance().DeSerialise();
+            try
+            {
+                Config.GetInstance().DeSerialise(); //逆シリアル化　XML→オブジェクト
+            }
+            catch (FileNotFoundException)
+            {
+                //btConfig_Click(sender, e);
+                ConfigWindowShow();
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void Window_Closed(object sender, EventArgs e)
         {
-            Config.GetInstance().Serialise();
+            try
+            {
+                Config.GetInstance().Serialise();   //シリアル化
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+        } 
+        private void ConfigWindowShow()
+        {
+            throw new NotImplementedException();
         }
+
     }
 }

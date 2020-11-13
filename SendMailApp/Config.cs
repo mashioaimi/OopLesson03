@@ -78,25 +78,20 @@ namespace SendMailApp
         //シリアル化
         public void Serialise()
         {
-            using (var writer = XmlWriter.Create("config.xml"))
-            {
-                var serializer = new XmlSerializer(instance.GetType());
-                serializer.Serialize(writer,instance);
-            }
+                using (var writer = XmlWriter.Create("config.xml"))
+                {
+                    var serializer = new XmlSerializer(instance.GetType());
+                    serializer.Serialize(writer, instance);
+                }
         }
 
         //逆シリアル化
         public void DeSerialise()
         {
-            using(var reader = XmlReader.Create("config.xml"))
-            {
-                var serializer = new XmlSerializer(typeof(Config));
-                var config = serializer.Deserialize(reader) as Config;
-                Smtp = config.Smtp;
-                Port = config.Port;
-                MailAddress = config.MailAddress;
-                PassWord = config.PassWord;
-                Ssl = config.Ssl;
+                using (var reader = XmlReader.Create("config.xml"))
+                {
+                    var serializer = new XmlSerializer(typeof(Config));
+                    instance = serializer.Deserialize(reader) as Config;
             }
         }
     }
