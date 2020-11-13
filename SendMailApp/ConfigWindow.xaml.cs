@@ -81,7 +81,29 @@ namespace SendMailApp
         //キャンセルボタン
         private void btCancel_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            textBox1_TextChanged(sender, e);
+        }
+
+
+        private void Message()
+        {
+            var result = System.Windows.MessageBox.Show("変更が反映されていません。",
+            "エラー",
+            MessageBoxButton.OKCancel
+            );
+            if (result == MessageBoxResult.OK)
+            {
+                this.Close();
+            }
+            else if(result == MessageBoxResult.Cancel)
+            {
+
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            Message();
         }
 
         //ロード時に一度だけ呼び出される
