@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -10,6 +11,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms.VisualStyles;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -54,7 +56,13 @@ namespace SendMailApp
 
                 if (tbCc.Text != "")
                     msg.Bcc.Add(tbBcc.Text);
-
+                if (lbBox.Items != null)
+                {
+                    foreach (var item in lbBox.Items)
+                    {
+                        msg.Attachments.Add(new Attachment(item.ToString()));
+                    }
+                }
                 msg.Subject = tbTitle.Text; //件名
                 msg.Body = tbBody.Text; //本文
 
@@ -122,5 +130,18 @@ namespace SendMailApp
             throw new NotImplementedException();
         }
 
+        private void btAdd_Click(object sender, RoutedEventArgs e)
+        {
+            var fod = new OpenFileDialog();
+            if (fod.ShowDialog() == true)
+            {
+                lbBox.Items.Add(fod.FileName);
+            }
+        }
+
+        private void btDelete_Click(object sender, RoutedEventArgs e)
+        {
+            lbBox.Items.Clear();
+        }
     }
 }
