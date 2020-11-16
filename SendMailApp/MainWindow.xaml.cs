@@ -141,7 +141,14 @@ namespace SendMailApp
 
         private void btDelete_Click(object sender, RoutedEventArgs e)
         {
-            lbBox.Items.Clear();
+            if (lbBox.SelectedItems.Count != 0)
+            {
+                lbBox.Items.RemoveAt(lbBox.SelectedIndex);
+            }
+            else
+            {
+                lbBox.Items.Clear();
+            }
         }
     }
 }
